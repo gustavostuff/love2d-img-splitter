@@ -20,22 +20,22 @@ end
 function splitter:draw()
     love.graphics.push('all')
 
-    -- hovering quad:
-    love.graphics.setColor(colors.red)
-    love.graphics.rectangle('line',
-        math.floor((self.hoveringQuadX or 0) / self.quadWidth) * self.quadWidth,
-        math.floor((self.hoveringQuadY or 0) / self.quadHeight) * self.quadHeight,
-        self.quadWidth,
-        self.quadHeight
-    )
-
+    
     -- boundaries:
     love.graphics.setColor(colors.yellow)
     love.graphics.rectangle('line',
-        self.x,
-        self.y,
-        self.quadsInX * self.quadWidth,
-        self.quadsInY * self.quadHeight
+    self.x,
+    self.y,
+    self.quadsInX * self.quadWidth,
+    self.quadsInY * self.quadHeight
+)
+    -- hovering quad:
+    love.graphics.setColor(colors.red)
+    love.graphics.rectangle('line',
+        self.x + self.hoveringQuadX * self.quadWidth,
+        self.y + self.hoveringQuadY * self.quadHeight,
+        self.quadWidth,
+        self.quadHeight
     )
 
     love.graphics.pop()
@@ -46,7 +46,11 @@ function splitter:newQuad(x, y)
 end
 
 function splitter:hover(x, y, sx, sy)
-    self.hoveringQuadX, self.hoveringQuadY = x, y
+    x = x / sx
+    y = y / sy
+
+    self.hoveringQuadX = math.floor((x - self.x) / self.quadWidth)
+    self.hoveringQuadY = math.floor((y - self.y) / self.quadHeight)
 end
 
 return splitter

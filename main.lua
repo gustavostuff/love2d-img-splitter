@@ -1,7 +1,7 @@
 canvas = {
   img = love.graphics.newImage('test2.jpg'),
-  x = 0,
-  y = 0
+  x = 20,
+  y = 30
 }
 
 local constants = require 'constants'
@@ -9,6 +9,8 @@ local sp = require 'splitter'
 local colors = require 'colors'
 
 function love.load()
+  love.graphics.setLineStyle(constants.LINE_STYLE_ROUGH)
+  love.graphics.setLineWidth(1)
   loveCanvas = love.graphics.newCanvas(constants.CANVAS_W, constants.CANVAS_H)
   loveCanvas:setFilter(constants.CANVAS_FILTER_NEAREST, constants.CANVAS_FILTER_NEAREST)
   loveCanvasSX = love.graphics.getWidth() / loveCanvas:getWidth()
@@ -54,9 +56,6 @@ function love.draw()
 end
 
 function love.mousemoved(x, y)
-  x = x / loveCanvasSX
-  y = y / loveCanvasSY
-
   quadsFrame:hover(x, y, loveCanvasSX, loveCanvasSY)
 end
 

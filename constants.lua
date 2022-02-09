@@ -1,5 +1,6 @@
 return {
-    CANVAS_W = 320,
-    CANVAS_H = 180,
-    CANVAS_FILTER_NEAREST = 'nearest'
+    CANVAS_W = 640,
+    CANVAS_H = 360,
+    CANVAS_FILTER_NEAREST = 'nearest',
+    LINE_STYLE_ROUGH = 'rough'
 }
