@@ -1,2 +1,3 @@
 # love2d-img-splitter
-love2d-image-splitter-tool
+
+### Simple tool to split an image in smaller pieces
